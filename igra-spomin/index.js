@@ -4,7 +4,7 @@ let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 
-// document.querySelector(".score").textContent = score;
+document.querySelector(".score").textContent = score;
 
 // 1 ... slika prvi šolski dan
 // 2 ... konec osnovne šole - dejavnost
@@ -103,7 +103,7 @@ function flipCard() {
 
   secondCard = this;
   score++;
-  // document.querySelector(".score").textContent = score;
+  document.querySelector(".score").textContent = score;
   lockBoard = true;
 
   checkForMatch();
@@ -140,7 +140,7 @@ function restart() {
   resetBoard();
   shuffleCards();
   score = 0;
-  // document.querySelector(".score").textContent = score;
+  document.querySelector(".score").textContent = score;
   gridContainer.innerHTML = "";
   generateCards();
 }
