@@ -166,7 +166,7 @@ function onlyOneCheckBox() {
               case 1:
                 cards_new = [...cards_new, ...cards_2];
                 break;
-              case 1:
+              case 2:
                 cards_new = [...cards_new, ...cards_3];
                 break;
               default:
