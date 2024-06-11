@@ -90,11 +90,36 @@ function generateCards() {
   }
 }
 
+function flipMatchingCard() {
+  for (let card of gridContainer.children) {
+    if(!card.classList.contains("flipped")) {
+      if(firstCard.dataset.name === card.dataset.name) {
+        card.classList.add("flipped");
+        
+        score++;
+        document.querySelector(".score").textContent = score;
+
+        firstCard.removeEventListener("click", flipCard);
+        firstCard.removeEventListener("contextmenu", event => {});
+        card.removeEventListener("click", flipCard);
+
+        resetBoard();
+      }
+    }
+  }
+}
+
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
 
   this.classList.add("flipped");
+  // Right click event
+  this.addEventListener("contextmenu", event => {
+    event.preventDefault();
+    flipMatchingCard();
+    return false;
+  });
 
   if (!firstCard) {
     firstCard = this;
@@ -117,6 +142,7 @@ function checkForMatch() {
 
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
+  firstCard.removeEventListener("contextmenu", event => {});
   secondCard.removeEventListener("click", flipCard);
 
   resetBoard();
