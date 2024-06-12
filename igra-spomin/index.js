@@ -219,7 +219,7 @@ function onlyOneCheckBox() {
 	}
 }
 
-function showAll() {
+function showAllCards() {
   for (let card of gridContainer.children) {
     if(!card.classList.contains("flipped")) {
       card.classList.add("flipped");
