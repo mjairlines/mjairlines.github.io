@@ -28,11 +28,18 @@ cards_names = [
   "bobek_mija",
 ];
 
+cards_0 = [];
 cards_1 = [];
 cards_2 = [];
-cards_3 = [];
 
 for(var i = 0; i < cards_names.length; i++) {
+  cards_0.push(
+    { 
+      "image": "assets/" + cards_names[i] + "-0.png",
+      "name": cards_names[i]
+    }
+  );
+
   cards_1.push(
     { 
       "image": "assets/" + cards_names[i] + "-1.png",
@@ -46,16 +53,9 @@ for(var i = 0; i < cards_names.length; i++) {
       "name": cards_names[i]
     }
   );
-
-  cards_3.push(
-    { 
-      "image": "assets/" + cards_names[i] + "-3.png",
-      "name": cards_names[i]
-    }
-  );
 }
 
-cards = [...cards_1, ...cards_3];
+cards = [...cards_0, ...cards_1];
 cards_new = [];
 
 shuffleCards();
@@ -187,13 +187,13 @@ function onlyOneCheckBox() {
             
             switch(i) {
               case 0:
-                cards_new = [...cards_new, ...cards_1];
+                cards_new = [...cards_new, ...cards_0];
                 break;
               case 1:
-                cards_new = [...cards_new, ...cards_2];
+                cards_new = [...cards_new, ...cards_1];
                 break;
               case 2:
-                cards_new = [...cards_new, ...cards_3];
+                cards_new = [...cards_new, ...cards_2];
                 break;
               default:
                 break;
@@ -217,4 +217,17 @@ function onlyOneCheckBox() {
       }
 		}
 	}
+}
+
+function showAll() {
+  for (let card of gridContainer.children) {
+    if(!card.classList.contains("flipped")) {
+      card.classList.add("flipped");
+    }
+  }
+
+  resetBoard();
+
+  score = 1000;
+  document.querySelector(".score").textContent = score;
 }
