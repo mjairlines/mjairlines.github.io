@@ -25,7 +25,7 @@ cards_names = [
   "polanc_tolja",
   "matkovic_niko",
   "kesar_tara",
-  "bobek_mija",
+  "bobek_mia",
 ];
 
 cards_0 = [];
